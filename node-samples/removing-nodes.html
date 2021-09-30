@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Removing Nodes Demo</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="myList">These are sports ball teams.
+        <li>Chicago Bulls</li>
+        <li>Portland Trail Blazers</li>
+        <li>Miami Heat</li>
+        <li>Phoenix Suns</li>
+    </ul>
+
+    <button type="button" onclick="removeListFirstChild()">Remove list first child with removeChild()</button>
+    <button type="button" onclick="removeAllListChildren()">Remove all list children with removeChild()</button>
+    <button type="button" onclick="removeList()">Remove entire list with remove()</button>
+    <p>Reload the page to reset the DOM and bring the list back.</p> 
+
+    <script>
+        const listNode = document.querySelector('#myList');
+        // this simply locates to the parent node or location of where to start-- it must be defined it is # or global so that all functions can use it
+        function removeListFirstChild() {
+            listNode.removeChild(listNode.firstElementChild);
+        }
+        //only works on double click-- first click removes white space then the list item. instead use firstElementChild instead of firstChild so that it grabs the element and not the white space/aka text
+        //
+        function removeAllListChildren() {
+            while (listNode.firstChild) {
+                listNode.removeChild(listNode.firstChild);
+            }
+        }
+        
+        function removeList() {
+            listNode.remove();
+            //this removes the list items and the <ul> element
+        }
+        //this would be useful in a shopping cart situation when you want to delete and item in the cart(??)
+        //challenge is to create a "reset" button that will generate the list again without reloading the page
+        //or creating a function that will remove every other node from teh list all at once
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cloning Nodes Demo</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="myList">
+        <li>Red</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <button type="button" onclick="cloneListItem()">Copy just the last listitem</button>
+    <button type="button" onclick="cloneListItemBranch()">Copy the last listitem and its branch</button>
+
+    <script>
+        const listNode = document.querySelector('#myList');
+        const nodeToCopy = listNode.lastElementChild;
+
+        function cloneListItem() {
+            const copy = nodeToCopy.cloneNode();
+            listNode.appendChild(copy);
+            //the text in this list is contained within a childText node that doesn't get cloned, so it produced a blank list item
+        }
+
+        function cloneListItemBranch() {
+            const copy = nodeToCopy.cloneNode(true);
+            listNode.appendChild(copy);
+            //will cause the node to copy along with it's branch and it's childText nodes as well
+        }
+        //challenge- how can you code this to copy the entire list instead of a single list item?
+    </script>
+</body>
+</html>
